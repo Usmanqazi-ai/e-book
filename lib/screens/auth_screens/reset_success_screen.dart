@@ -1,9 +1,7 @@
-import 'package:e_book_store/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../widgets/elevated_button.dart';
+import 'login_screen.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({super.key});
@@ -23,18 +21,15 @@ class SuccessScreen extends StatelessWidget {
               height: 190,
             ),
             Text(
-              'Email Sent',
+              'Email Verified',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
-            Center(
-              child: Text(
-                "Email send to yours provided email account,",
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
+            const SizedBox(
+              height: 40,
             ),
             Center(
               child: Text(
-                "Please check your email",
+                "Go to Login Page",
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
@@ -43,7 +38,7 @@ class SuccessScreen extends StatelessWidget {
             ),
             ElevatedBtn(
               onPressed: () {
-                Get.to(const LoginScreen());
+                Get.offAll(const LoginScreen());
               },
               title: 'Login',
               radius: 30,

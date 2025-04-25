@@ -1,10 +1,9 @@
-import 'package:e_book_store/screens/cart_screens/cart_screen.dart';
-import 'package:e_book_store/screens/home_screens/home_screen.dart';
-import 'package:e_book_store/utils/colors.dart';
 import 'package:e_book_store/utils/helpers/helper_functions.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'controllers/navigation_contnroller.dart';
 
 class BottomNavigationMenu extends StatelessWidget {
   const BottomNavigationMenu({super.key});
@@ -16,7 +15,7 @@ class BottomNavigationMenu extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Obx(
         () => NavigationBar(
-          height: 90,
+          height: 80,
           elevation: 0,
           labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
           backgroundColor: dark ? Colors.black : Colors.white,
@@ -48,14 +47,4 @@ class BottomNavigationMenu extends StatelessWidget {
       body: Obx(() => controller.screens[controller.selectedIndex.value]),
     );
   }
-}
-
-class NavigationController extends GetxController {
-  final Rx<int> selectedIndex = 0.obs;
-  final screens = [
-    HomeScreen(),
-    const Center(child: Text("Category")),
-    const CartScreen(),
-    const Center(child: Text("Profile"))
-  ];
 }

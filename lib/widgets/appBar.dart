@@ -24,11 +24,13 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     final dark = UHelperFunctions.isDarkMode(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 15,
+        horizontal: 20,
       ),
       child: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: dark ? Colors.black : Colors.white,
         title: title,
+        elevation: 0,
+        scrolledUnderElevation: 0,
         automaticallyImplyLeading: false,
         leading: showBackArrow
             ? IconButton(

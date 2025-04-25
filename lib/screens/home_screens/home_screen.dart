@@ -1,14 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_book_store/controllers/home_controller.dart';
+import 'package:e_book_store/screens/home_screens/authors_screen.dart';
+import 'package:e_book_store/screens/home_screens/vendors_screen.dart';
 import 'package:e_book_store/utils/colors.dart';
 import 'package:e_book_store/utils/helpers/helper_functions.dart';
 import 'package:e_book_store/widgets/appBar.dart';
+import 'package:e_book_store/widgets/circuler_image.dart';
 import 'package:e_book_store/widgets/rounded_image.dart';
 import 'package:e_book_store/widgets/section_heading_with_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 import '../../widgets/circuler_container.dart';
 
@@ -76,51 +77,50 @@ class HomeScreen extends StatelessWidget {
                 showActionButton: true,
               ),
               SizedBox(
-                height: 200,
+                height: 170,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (_, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                        child: SizedBox(
-                          height: 150,
-                          width: 100,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const URoundedImage(
-                                fit: BoxFit.cover,
-                                imgUrl: "assets/images/book_cover.png",
-                                height: 160,
-                                width: 100,
-                                borderRadius: 10,
-                              ),
-                              Text(
-                                "Brown Rusty Mystery Novels",
-                                style: Theme.of(context).textTheme.bodyMedium,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              Text(
-                                "\$14.99",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.apply(color: UColors.primary),
-                              )
-                            ],
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const URoundedImage(
+                            fit: BoxFit.fitWidth,
+                            imgUrl: "assets/images/book_cover.png",
+                            height: 130,
+                            width: 100,
+                            borderRadius: 20,
                           ),
-                        ),
+                          SizedBox(
+                            width: 100,
+                            child: Text(
+                              "Brown Soul Novels",
+                              style: Theme.of(context).textTheme.bodyMedium,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Text(
+                            "\$14.99",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.apply(color: UColors.primary),
+                          )
+                        ],
                       );
                     }),
               ),
-              const USectionHeading(
+              USectionHeading(
                 title: "Best Vendors",
                 showActionButton: true,
+                onPressed: () {
+                  Get.to(const VendorsScreen());
+                },
               ),
               Container(
-                height: 100,
+                height: 80,
                 padding: const EdgeInsets.only(
                   right: 8,
                 ),
@@ -128,30 +128,57 @@ class HomeScreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (_, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0,
+                      return const Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.0,
                         ),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 8),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: UColors.textFiledColor,
-                          ),
-                          child: const URoundedImage(
-                            fit: BoxFit.fill,
-                            imgUrl: "assets/images/company_logo.png",
-                            backgroundColor: UColors.textFiledColor,
-                            borderRadius: 10,
-                          ),
+                        child: URoundedImage(
+                          fit: BoxFit.cover,
+                          width: 80,
+                          imgUrl: "assets/images/company_logo.png",
+                          backgroundColor: UColors.textFiledColor,
+                          borderRadius: 10,
+                          padding: EdgeInsets.symmetric(horizontal: 5),
                         ),
                       );
                     }),
               ),
-              const USectionHeading(
+              USectionHeading(
                 title: "Authors",
                 showActionButton: true,
+                onPressed: () => Get.to(const AuthorsScreen()),
+              ),
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 5,
+                    itemBuilder: (_, index) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const UCirculerImage(
+                            height: 100,
+                            width: 100,
+                            image: 'assets/images/writer_image.png',
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "John Freeman",
+                            style: Theme.of(context).textTheme.bodyMedium,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text("Writer",
+                              style: Theme.of(context).textTheme.bodySmall)
+                        ],
+                      );
+                    }),
               ),
             ],
           ),

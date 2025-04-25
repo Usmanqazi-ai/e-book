@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../utils/colors.dart';
 
 class UTextFilled extends StatelessWidget {
   const UTextFilled({
@@ -41,34 +40,28 @@ class UTextFilled extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 4, right: 10, left: 10, bottom: 4),
-      width: width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: isDarkMode ? Colors.white : UColors.textFiledColor,
-      ),
-      child: TextFormField(
-        readOnly: readOnly,
-        onTap: onTap,
-        controller: textEditingController,
-        validator: validator,
-        autofocus: autoFocus,
-        focusNode: focusNode,
-        keyboardType: keyBoardType,
-        textAlign: TextAlign.left,
-        cursorColor: Colors.black,
-        obscureText: isPassword,
-        style: const TextStyle(
-            fontSize: 18, fontWeight: FontWeight.w400, color: Colors.black),
-        decoration: InputDecoration(
-            hintText: hint,
-            prefixText: prefixText,
-            prefixIcon: startIcon,
-            suffixIcon: endIcon,
-            hintStyle: const TextStyle(color: Colors.black45),
-            border: InputBorder.none),
-      ),
+    return TextFormField(
+      readOnly: readOnly,
+      onTap: onTap,
+      controller: textEditingController,
+      validator: validator,
+      autofocus: autoFocus,
+      focusNode: focusNode,
+      keyboardType: keyBoardType,
+      textAlign: TextAlign.left,
+      cursorColor: Colors.black,
+      obscureText: isPassword,
+      style: const TextStyle(
+          fontSize: 18, fontWeight: FontWeight.w400, color: Colors.black),
+      decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.white,
+          hintText: hint,
+          prefixText: prefixText,
+          prefixIcon: startIcon,
+          suffixIcon: endIcon,
+          hintStyle: const TextStyle(color: Colors.black45),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
     );
   }
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../widgets/elevated_button.dart';
 import 'login_screen.dart';
 
-class SignupSuccess extends StatelessWidget {
-  const SignupSuccess({super.key});
+class PasswordRestSuccessScreen extends StatelessWidget {
+  const PasswordRestSuccessScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +22,15 @@ class SignupSuccess extends StatelessWidget {
               height: 190,
             ),
             Text(
-              'Congratulation!',
+              'Email Sent',
               style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            const SizedBox(
+              height: 40,
             ),
             Center(
               child: Text(
-                "your account is complete, please enjoy the best menu from us.",
+                "Password rest email sent to your account ",
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
@@ -37,7 +41,7 @@ class SignupSuccess extends StatelessWidget {
               onPressed: () {
                 Get.offAll(const LoginScreen());
               },
-              title: 'Get Started',
+              title: 'Done',
               radius: 30,
             )
           ],

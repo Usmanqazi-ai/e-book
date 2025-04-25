@@ -1,17 +1,15 @@
-import 'package:e_book_store/app.dart';
 import 'package:e_book_store/controllers/on_boarding_controller.dart';
-import 'package:e_book_store/screens/login_screen.dart';
 import 'package:e_book_store/utils/colors.dart';
 import 'package:e_book_store/utils/constant/strings.dart';
 import 'package:e_book_store/widgets/elevated_btn_white.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../utils/helpers/helper_functions.dart';
 import '../../widgets/elevated_button.dart';
 import '../../widgets/onBoardingWidgets.dart';
+import 'login_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   OnboardingScreen({super.key});
@@ -81,11 +79,16 @@ class OnboardingScreen extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          ElevatedBtnWhite(
-              title: "Sign in",
-              onPressed: () {
-                Get.to(const LoginScreen());
-              }),
+          Obx(
+            () => Visibility(
+              visible: controller.visibilityBtn(),
+              child: ElevatedBtnWhite(
+                  title: "Sign in",
+                  onPressed: () {
+                    Get.to(const LoginScreen());
+                  }),
+            ),
+          ),
           const SizedBox(
             height: 20,
           )
